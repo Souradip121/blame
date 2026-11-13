@@ -48,15 +48,24 @@ function renderToken() {
 const SCREENS = ['home', 'split', 'verdict'];
 function show(name, { push = true } = {}) {
   if (name !== 'home' && !state.result) name = 'home';
+  const from = state.wanted || state.screen;
+  state.wanted = name;
+  // transitions can run their updates late (fast taps, a hidden tab): always draw the latest request
   const go = () => {
-    for (const s of SCREENS) $(`#${s}`).hidden = s !== name;
-    state.screen = name;
+    const target = state.wanted;
+    if (state.screen === target && !$(`#${target}`).hidden) return;
+    for (const s of SCREENS) $(`#${s}`).hidden = s !== target;
+    state.screen = target;
     window.scrollTo(0, 0);
-    if (name === 'split') { printSplit(); $('#split-h').focus({ preventScroll: true }); }
-    if (name === 'verdict') { printVerdict(); $('#verdict-h').focus({ preventScroll: true }); }
+    if (target === 'split') { printSplit(); $('#split-h').focus({ preventScroll: true }); }
+    if (target === 'verdict') { printVerdict(); $('#verdict-h').focus({ preventScroll: true }); }
   };
-  if (document.startViewTransition && !reduced() && state.screen !== name) document.startViewTransition(go);
-  else go();
+  if (document.startViewTransition && !reduced() && from !== name && !document.hidden) {
+    // a quick second tap skips the first transition; its update still runs, so the rejection is noise
+    const vt = document.startViewTransition(go);
+    vt.ready.catch(() => {});
+    vt.finished.catch(() => {});
+  } else go();
   if (push) {
     const url = new URL(location.href);
     if (state.data && name !== 'home') url.searchParams.set('repo', state.data.repo.full_name);
