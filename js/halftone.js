@@ -58,7 +58,8 @@ function contain(src, w, h, { fy = 1 } = {}) {
  * Print the luminance of `src` (a canvas the same size as ctx's target region) as dots.
  * cell: dot pitch in device px. Levels are stretched per image so dim avatars still print.
  */
-function dots(ctx, src, { cell, angle = Math.PI / 4, ink = INK, gamma = 0.9, levels = true }) {
+function dots(ctx, src, { cell, angle = Math.PI / 4, ink = INK, gamma = 0.8, levels = true }) {
+  cell = Math.max(2.2, cell); // never finer than the screen can print
   const w = src.width; const h = src.height;
   const data = src.getContext('2d').getImageData(0, 0, w, h).data;
   let lo = 0; let hi = 1;
@@ -144,12 +145,12 @@ export function disc(img, { size, dpr = 1, cell = 2.6, bg = YELLOW, zoom = 1.04 
   g.clip();
   g.fillStyle = bg;
   g.fillRect(0, 0, S, S);
-  dots(g, src, { cell: cell * dpr, gamma: 1.05 });
+  dots(g, src, { cell: cell * dpr, gamma: 0.85 });
   return out;
 }
 
 /** A cut-out on a yellow disc (the demo portraits and the unknown-suspect silhouette). */
-export function discCutout(img, { size, dpr = 1, cell = 2.6, bg = YELLOW, fill = PAPER, zoom = 1.12, fy = 0.15 }) {
+export function discCutout(img, { size, dpr = 1, cell = 2.6, bg = YELLOW, fill = PAPER, zoom = 1.35, fy = 0.2 }) {
   const S = size * dpr;
   const src = cover(img, S, S, { zoom, fy });
   const out = canvas(S, S);
@@ -160,7 +161,7 @@ export function discCutout(img, { size, dpr = 1, cell = 2.6, bg = YELLOW, fill =
   g.fillStyle = bg;
   g.fillRect(0, 0, S, S);
   g.drawImage(tint(src, fill), 0, 0);
-  dots(g, src, { cell: cell * dpr, gamma: 1.25 });
+  dots(g, src, { cell: cell * dpr, gamma: 0.8 });
   return out;
 }
 

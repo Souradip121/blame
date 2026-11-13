@@ -1,5 +1,5 @@
 // The share card: the verdict as a 1080 x 1920 tabloid front page, drawn on the phone.
-import { cutout, disc, discCutout, INK, YELLOW, PAPER } from './halftone.js';
+import { cutout, disc, discCutout, loadImage, INK, YELLOW, PAPER } from './halftone.js';
 
 const W = 1080;
 const H = 1920;
@@ -139,20 +139,25 @@ export async function drawCard(result, { repoName, countLabel, url, source }) {
   const heroTop = 244 + tapeH + 24;
   const heroH = Math.max(420, 1010 - heroTop);
   const who = result.headline.who;
-  g.save();
-  g.translate(W / 2 + 20, heroTop + heroH * 0.55);
-  g.rotate(-0.12);
-  g.fillStyle = YELLOW;
-  g.beginPath();
-  g.ellipse(0, 0, heroH * 0.52, heroH * 0.46, 0, 0, Math.PI * 2);
-  g.fill();
-  g.restore();
+  try {
+    // the painted swash behind the portrait (the same asset as the page)
+    const sw = await loadImage('assets/swash.webp');
+    const sww = Math.min(W * 1.02, heroH * 2.1); const swh = sww * (sw.naturalHeight / sw.naturalWidth);
+    g.save();
+    g.translate(W / 2 + 10, heroTop + heroH * 0.6);
+    g.rotate(-0.24);
+    g.drawImage(sw, -sww / 2, -swh / 2, sww, swh);
+    g.restore();
+  } catch {
+    g.fillStyle = YELLOW;
+    g.beginPath(); g.ellipse(W / 2, heroTop + heroH * 0.55, heroH * 0.52, heroH * 0.42, -0.12, 0, Math.PI * 2); g.fill();
+  }
   if (who) {
     try {
       const s = await source(who);
       let art;
-      if (s.kind === 'photo') art = disc(s.img, { size: heroH * 0.9, cell: 7 });
-      else art = cutout(s.img, { w: heroH * 1.1, h: heroH, cell: 7, halo: 12 });
+      if (s.kind === 'photo') art = disc(s.img, { size: heroH * 0.9, cell: 4.6 });
+      else art = cutout(s.img, { w: heroH * 1.1, h: heroH, cell: 4.4, halo: 12 });
       g.drawImage(art, (W - art.width) / 2, heroTop + heroH - art.height);
     } catch { /* no picture: the tape and the text still carry it */ }
     if (result.headline.kind === 'carried' || result.headline.kind === 'solo' || result.headline.kind === 'pair') crown(g, W / 2 - heroH * 0.42, heroTop + 10, 150, -0.25);
@@ -188,7 +193,7 @@ export async function drawCard(result, { repoName, countLabel, url, source }) {
     const av = 76;
     try {
       const s = await source(p);
-      const art = s.kind === 'photo' ? disc(s.img, { size: av, cell: 3.2 }) : discCutout(s.img, { size: av, cell: 3.2 });
+      const art = s.kind === 'photo' ? disc(s.img, { size: av, cell: 2.3 }) : discCutout(s.img, { size: av, cell: 2.3 });
       g.drawImage(art, 64, y + (rowH - av) / 2 - 4);
     } catch {
       g.fillStyle = YELLOW; g.beginPath(); g.arc(64 + av / 2, y + rowH / 2 - 4, av / 2, 0, Math.PI * 2); g.fill();
@@ -230,12 +235,15 @@ export async function drawCard(result, { repoName, countLabel, url, source }) {
   const d = result.deadline;
   if (y < H - 330) {
     const bh = 112;
-    tape(g, 50, y + 14, W - 100, bh, YELLOW, { angle: -0.012, amp: 6 });
+    const num = `${d.count.toLocaleString('en-IN')}`;
+    g.font = `66px ${HEAD}`;
+    const nw = g.measureText(num).width;
+    g.font = `600 34px ${COND}`;
+    const tw = Math.max(g.measureText(`${d.count === 1 ? 'commit' : 'commits'} in the last 24 hours`).width, g.measureText(`before the ${d.set ? 'deadline' : 'final commit'}`).width);
+    tape(g, 50, y + 14, Math.min(W - 100, nw + tw + 110), bh, YELLOW, { angle: -0.012, amp: 6 });
     g.fillStyle = INK; g.textAlign = 'left'; g.textBaseline = 'middle';
     g.font = `66px ${HEAD}`;
-    const num = `${d.count.toLocaleString('en-IN')}`;
     g.fillText(num, 96, y + 14 + bh / 2 + 3);
-    const nw = g.measureText(num).width;
     g.font = `600 34px ${COND}`;
     g.fillText(`${d.count === 1 ? 'commit' : 'commits'} in the last 24 hours`, 96 + nw + 22, y + 14 + bh / 2 - 18);
     g.fillText(`before the ${d.set ? 'deadline' : 'final commit'}`, 96 + nw + 22, y + 14 + bh / 2 + 20);

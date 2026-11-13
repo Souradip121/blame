@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Blame: who actually did the group project?</title>
 <meta name="description" content="Paste your group project's GitHub link. Blame reads the commit history in your browser and shows who actually did the work. Nothing is stored.">
-<meta name="theme-color" content="#EEEBE5">
+<meta name="theme-color" content="#F0EDE7">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src https://api.github.com; img-src 'self' data: blob: https://avatars.githubusercontent.com; style-src 'self'; font-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta property="og:title" content="Blame">
@@ -107,7 +107,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <p class="strip" id="split-strip"><span id="repo-name">repo</span> <span class="dot">·</span> <span id="repo-count">0 commits</span></p>
 
   <div class="measure" role="radiogroup" aria-label="Count by">
-    <span class="measure-label" aria-hidden="true">Count</span>
     <button type="button" role="radio" aria-checked="true" data-measure="commits">Commits</button>
     <button type="button" role="radio" aria-checked="false" data-measure="lines">Lines changed</button>
   </div>
@@ -125,7 +124,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   </div>
   <div class="deadline-tools">
     <p class="note" id="dl-extra"></p>
-    <label class="dl-set"><span>Deadline</span><input type="datetime-local" id="dl-input" step="60"></label>
+    <label class="dl-set"><span>Real deadline</span><input type="datetime-local" id="dl-input" step="60"></label>
     <button class="link" type="button" id="dl-clear" hidden>Use the final commit</button>
   </div>
 
@@ -146,7 +145,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   </header>
   <div class="front front-inner">
     <p class="exclusive tape-red small">Exclusive</p>
-    <h2 class="headline headline-verdict" id="verdict-h" tabindex="-1"><span class="tape tape-yellow" id="headline">Someone carried.</span></h2>
+    <h2 class="headline headline-verdict" id="verdict-h" tabindex="-1"><span class="tapes" id="headline"><span class="tape tape-yellow">Someone carried.</span></span></h2>
   </div>
 
   <figure class="hero" id="hero" aria-hidden="true">

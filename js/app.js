@@ -215,6 +215,7 @@ async function chooseMeasure(m) {
   if (!gh.hasToken) openToken();
 }
 function openToken() { $('#token-box').open = true; }
+const isDemo = () => state.data?.repo.full_name.toLowerCase() === DEMO_REPO.toLowerCase();
 function listNames(names) {
   if (names.length <= 2) return names.join(' and ');
   return `${names.slice(0, 2).join(', ')} and ${names.length - 2} more`;
@@ -273,7 +274,7 @@ function renderSplit({ animate = false } = {}) {
       li = document.createElement('li');
       li.className = 'row';
       li.dataset.key = p.key;
-      li.innerHTML = `<canvas class="avatar" width="70" height="70" aria-hidden="true"></canvas><div class="row-main"><div class="row-top"><span class="row-name"></span><span class="row-pct"></span></div><div class="bar" aria-hidden="true"><span></span></div><p class="row-meta"></p></div>`;
+      li.innerHTML = `<canvas class="avatar" width="70" height="70" aria-hidden="true"></canvas><div class="row-main"><div class="row-top"><p class="row-who"><span class="row-name"></span> <span class="row-meta"></span></p><span class="row-pct"></span></div><div class="bar" aria-hidden="true"><span></span></div></div>`;
       paintAvatar(li.querySelector('canvas'), p, 70);
     }
     li.querySelector('.row-name').textContent = p.display;
@@ -329,6 +330,7 @@ function renderNotes() {
   ul.textContent = '';
   const add = (html) => { const li = document.createElement('li'); li.innerHTML = html; ul.appendChild(li); return li; };
   const esc = (s) => String(s).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+  if (isDemo()) add('This is the demo repo: a made-up team (portraits generated) and a generated history. Paste your own to blame real people.');
   add(`Only the <strong>${esc(d.repo.default_branch)}</strong> branch counts. Work still sitting in other branches doesn’t show up.`);
   if (d.truncated) add(`Big repo: only the latest ${fmt(d.raw.length)} of ${fmt(d.total)} commits are counted${state.token ? '' : `. A token reads up to ${fmt(PAGE_CAP.token * 100)}`}.`);
   if (d.repo.fork) {
@@ -429,16 +431,16 @@ const escHtml = (t) => t.replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;
 
 /** The verdict headline: one line if it can be big, otherwise two balanced lines, like a front page. */
 function fitHeadline() {
-  const tape = $('#headline');
+  const holder = $('#headline');
   const box = $('#verdict .front-inner');
-  const text = state.result?.headline.text || tape.textContent;
+  const text = state.result?.headline.text || holder.textContent;
   const avail = (box.clientWidth || Math.min(460, innerWidth) - 32) - 8;
   const PAD = 0.34; // the tape's side padding, in em
   const one = textWidth(text, '100px Anton') / 100;
   let size = avail / (one + PAD);
   let lines = [text];
   const words = text.split(' ');
-  if (size < 66 && words.length > 1) {
+  if (size < 52 && words.length > 1) {
     let best = null;
     for (let i = 1; i < words.length; i++) {
       const a = words.slice(0, i).join(' '); const b = words.slice(i).join(' ');
@@ -446,12 +448,23 @@ function fitHeadline() {
       if (!best || w < best.w) best = { w, lines: [a, b] };
     }
     const two = avail / (best.w + PAD);
-    if (two > size * 1.25) { size = two; lines = best.lines; }
+    if (two > size * 1.2) { size = two; lines = best.lines; }
   }
   size = Math.max(30, Math.min(lines.length > 1 ? 96 : 104, Math.floor(size)));
-  tape.innerHTML = lines.map(escHtml).join('<br>');
-  tape.style.setProperty('--fit', `${size}px`);
-  tape.dataset.lines = lines.length;
+  // one torn tape per line, each shrink-wrapped to its words
+  holder.innerHTML = lines.map((l) => `<span class="tape tape-yellow">${escHtml(l)}</span>`).join('');
+  holder.style.setProperty('--fit', `${size}px`);
+  holder.dataset.lines = lines.length;
+}
+
+/** "Blame" on the front page: as big as the tape allows, with yellow showing either side. */
+function fitTitle() {
+  const t = $('.title .tape');
+  const avail = t.clientWidth;
+  if (!avail) return;
+  const w = textWidth('Blame', '100px Anton') / 100;
+  const size = Math.min(avail / (w + 0.3), innerHeight * 0.2, 172);
+  t.style.fontSize = `${Math.floor(size)}px`;
 }
 
 /** The jab strip: one line if it fits at a readable size. */
@@ -469,7 +482,7 @@ function printVerdict() {
   fitJab();
   paintHero();
   if (reduced()) return;
-  $('#verdict .headline .tape').animate([{ transform: 'rotate(-9deg) scale(1.3)', opacity: 0 }, { transform: 'rotate(-1.6deg) scale(1)', opacity: 1 }], { duration: 460, easing: 'cubic-bezier(.2,1.25,.3,1)', fill: 'backwards' });
+  document.querySelectorAll('#verdict .headline .tape').forEach((t, i) => t.animate([{ transform: 'rotate(-9deg) scale(1.3)', opacity: 0 }, { transform: 'rotate(-2.4deg) scale(1)', opacity: 1 }], { duration: 460, delay: i * 140, easing: 'cubic-bezier(.2,1.25,.3,1)', fill: 'backwards' }));
   $('#hero .hero-print').animate([{ clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0 0)' }], { duration: 900, delay: 200, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' });
   $('#jab').animate([{ transform: 'rotate(-1.4deg) translateY(16px)', opacity: 0 }, { transform: 'rotate(-1.4deg)', opacity: 1 }], { duration: 500, delay: 700, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' });
 }
@@ -493,7 +506,7 @@ async function paintAvatar(cv, p, size) {
   const dpr = DPR();
   try {
     const s = await source(p, size * dpr);
-    const art = s.kind === 'photo' ? H.disc(s.img, { size, dpr, cell: 2.4 }) : H.discCutout(s.img, { size, dpr, cell: 2.4 });
+    const art = s.kind === 'photo' ? H.disc(s.img, { size, dpr, cell: 1.4 }) : H.discCutout(s.img, { size, dpr, cell: 1.4 });
     cv.width = art.width; cv.height = art.height;
     cv.getContext('2d').drawImage(art, 0, 0);
   } catch { /* the yellow disc stays */ }
@@ -513,8 +526,8 @@ async function paintHero() {
   if (heroKey !== key) return;
   fig.dataset.kind = s.kind === 'photo' ? 'disc' : 'cutout';
   const art = s.kind === 'photo'
-    ? H.disc(s.img, { size: h * 0.86, dpr, cell: 3.6 })
-    : H.cutout(s.img, { w, h, dpr, cell: 3.4, halo: 8 });
+    ? H.disc(s.img, { size: h * 0.86, dpr, cell: 2.1 })
+    : H.cutout(s.img, { w, h, dpr, cell: 2.0, halo: 8 });
   cv.width = art.width; cv.height = art.height;
   cv.style.height = `${art.height / dpr}px`;
   cv.style.width = `${art.width / dpr}px`;
@@ -530,7 +543,7 @@ async function paintLineup() {
   try {
     const img = await H.loadImage('assets/suspects/lineup.webp');
     const dpr = DPR();
-    const art = H.cutout(img, { w, h, dpr, cell: 2.5, halo: 5, fy: 1 });
+    const art = H.cutout(img, { w, h, dpr, cell: 1.7, halo: 5, fy: 1 });
     cv.width = art.width; cv.height = art.height;
     cv.style.width = `${w}px`; cv.style.height = `${h}px`;
     cv.getContext('2d').drawImage(art, 0, 0);
@@ -559,7 +572,7 @@ $('#share').addEventListener('click', async () => {
     const r = state.result;
     const blob = await drawCard(r, {
       repoName: state.data.repo.name,
-      countLabel: `${state.data.truncated ? 'latest ' : ''}${plural(r.totalCommits, 'commit')}${r.measure === 'lines' ? ` · ${plural(r.totalLines, 'line')} changed` : ''}`,
+      countLabel: `${state.data.truncated ? 'latest ' : ''}${plural(r.totalCommits, 'commit')}${r.measure === 'lines' ? ` · ${plural(r.totalLines, 'line')} changed` : ''}${isDemo() ? ' · made-up demo team' : ''}`,
       url: SITE,
       source: (p) => source(p, 600),
     });
@@ -595,9 +608,9 @@ $('#sheet').addEventListener('click', (e) => { if (e.target === $('#sheet')) $('
 
 // ---------------------------------------------------------------- start
 renderToken();
-document.fonts.ready.then(() => { paintLineup(); if (state.result) { fitHeadline(); fitJab(); } });
+document.fonts.ready.then(() => { fitTitle(); paintLineup(); if (state.result) { fitHeadline(); fitJab(); } });
 let rz;
-window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { paintLineup(); if (state.screen === 'verdict') { fitHeadline(); fitJab(); paintHero(); } }, 150); });
+window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { fitTitle(); paintLineup(); if (state.screen === 'verdict') { fitHeadline(); fitJab(); paintHero(); } }, 150); });
 
 const start = new URL(location.href);
 const startRepo = start.searchParams.get('repo');

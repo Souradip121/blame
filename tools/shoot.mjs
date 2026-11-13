@@ -108,7 +108,7 @@ await send('Fetch.enable', { patterns: [{ urlPattern: 'https://api.github.com/*'
 await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
 
 async function phone() {
-  await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 3, mobile: true });
+  await send('Emulation.setDeviceMetricsOverride', { width: Number(process.env.VW || 390), height: Number(process.env.VH || 844), deviceScaleFactor: Number(process.env.DSF || 3), mobile: true });
   await send('Emulation.setTouchEmulationEnabled', { enabled: true });
 }
 async function desktop() {
