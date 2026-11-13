@@ -39,6 +39,7 @@ It reads the actual git history instead of asking people to self-report, and tur
 - Badges (Carried, Solid, Night-before, Moral support) follow stated rules written in the README and on the page.
 - Nothing is stored on a server. A token, if given, lives in sessionStorage only and is sent only to api.github.com.
 - Must state on screen that commit counts are a rough measure of effort (pairing, design and testing don't show up) and that the verdict is for fun.
+- Open decision (owner sign-off pending): the home screen has a "Try the demo team's repo" link that loads `Souradip121/hostel-mess-app` (a made-up team). The build session added it for people without a repo to hand and for the reel; it was not in the brief. When the demo is loaded, the small print and the share card say the team is made up. Remove the `.demo-line` paragraph in index.html if the owner says no.
 
 ## Brand Commitments
 

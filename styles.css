@@ -475,10 +475,20 @@ h1, h2, h3, p, ol, ul, figure { margin: 0; }
 .verdict .btn-black { margin-top: 18px; }
 .verdict .status { margin-top: 8px; }
 .rules { margin-top: 22px; }
-.rules summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 18px; padding: 6px 0; text-decoration: underline; text-underline-offset: .2em; text-decoration-thickness: 1.5px; }
+.rules summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 18px; padding: 6px 0; }
+.rules summary span { text-decoration: underline; text-underline-offset: .2em; text-decoration-thickness: 1.5px; }
 .rules summary::-webkit-details-marker { display: none; }
-.rules summary::after { content: '+'; font-family: var(--f-head); font-weight: 400; font-size: 22px; line-height: 1; }
-.rules[open] summary::after { content: '\2013'; }
+.rules summary::after {
+  content: '';
+  width: 16px; height: 16px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 4.5v15M4.5 12h15' stroke='%23000' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 4.5v15M4.5 12h15' stroke='%23000' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.rules[open] summary::after {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4.5 12h15' stroke='%23000' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4.5 12h15' stroke='%23000' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
 .rules ul { margin: 6px 0 8px; padding-left: 1.1em; display: grid; gap: 6px; font-size: 17px; color: var(--ink-soft); }
 .rules .note { text-align: left; }
 .caveat-verdict { margin-top: 10px; font-size: 16px; color: var(--muted); }

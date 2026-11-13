@@ -10,7 +10,7 @@ Live: **https://souradip121.github.io/blame/**
   <img src="screenshots/3-the-verdict.png" width="250" alt="The verdict: Riya carried. Tisha: 3 commits, 2 of them README. Badges and a Share to the group button">
 </p>
 
-<sub>The screenshots use [Souradip121/hostel-mess-app](https://github.com/Souradip121/hostel-mess-app), a demo repo with a made-up team and a generated history. Their portraits are AI-generated; nobody real is being blamed.</sub>
+<sub>The screenshots use [Souradip121/hostel-mess-app](https://github.com/Souradip121/hostel-mess-app), a demo repo with a made-up team and a generated history. Their portraits are AI-generated; nobody real is being blamed. The home page links it as “Try the demo team’s repo” for anyone without a repo to hand, and when it’s loaded the small print and the share card say the team is made up.</sub>
 
 Paste a GitHub link from a group project. The page reads the repo’s history **in your browser**, straight from GitHub, and shows:
 
