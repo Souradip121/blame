@@ -1,0 +1,8 @@
+.impeccable/review/
+.impeccable/assets-src/*.png
+!.impeccable/assets-src/contact.png
+node_modules/
+.DS_Store
+Thumbs.db
+screenshots/*-full.png
+screenshots/desktop.png

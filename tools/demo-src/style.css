@@ -1,0 +1,123 @@
+:root {
+  --bg: #fffaf2;
+  --ink: #2b2118;
+  --muted: #7a6a5a;
+  --accent: #e2711d;
+  --card: #ffffff;
+  --line: #eadfce;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.top {
+  padding: 24px 16px 8px;
+  background: var(--accent);
+  color: #fff;
+}
+
+.top h1 { margin: 0; font-size: 28px; }
+.top .sub { margin: 4px 0 16px; opacity: .9; }
+
+.tabs { display: flex; gap: 8px; }
+
+.tab {
+  flex: 1;
+  padding: 10px 0;
+  border: 0;
+  border-radius: 10px 10px 0 0;
+  background: rgba(255,255,255,.2);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tab.active { background: var(--bg); color: var(--ink); }
+
+main { padding: 16px; max-width: 640px; margin: 0 auto; }
+
+.view.hidden { display: none; }
+
+.meals { display: grid; gap: 12px; }
+
+.meal {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.meal h3 { margin: 0 0 4px; font-size: 18px; }
+.meal .time { color: var(--muted); font-size: 13px; }
+.meal ul { margin: 8px 0; padding-left: 18px; }
+
+.stars { display: flex; gap: 4px; }
+
+.star {
+  border: 0;
+  background: none;
+  font-size: 22px;
+  color: #d6c7b2;
+  cursor: pointer;
+  padding: 0;
+}
+
+.star.on { color: var(--accent); }
+
+.avg { color: var(--muted); font-size: 13px; margin-top: 4px; }
+
+.day-picker { display: flex; gap: 6px; overflow-x: auto; margin-bottom: 12px; }
+
+.day {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  cursor: pointer;
+}
+
+.day.active { background: var(--ink); color: #fff; }
+
+form { display: grid; gap: 12px; }
+
+label { display: grid; gap: 6px; font-weight: 600; }
+
+select, textarea {
+  font: inherit;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+form button {
+  padding: 12px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
+
+.complaint-list { list-style: none; padding: 0; display: grid; gap: 8px; }
+
+.complaint-list li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.complaint-list .meta { color: var(--muted); font-size: 12px; }
+
+.foot { text-align: center; color: var(--muted); padding: 24px 16px; }
+.foot .small { font-size: 12px; }
+
+@media (min-width: 720px) {
+  .meals { grid-template-columns: 1fr 1fr; }
+}

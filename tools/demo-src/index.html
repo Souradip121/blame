@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hostel 7 Mess</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Hostel 7 Mess</h1>
+    <p class="sub">What's cooking today, and was it any good?</p>
+    <nav class="tabs">
+      <button class="tab active" data-view="today">Today</button>
+      <button class="tab" data-view="week">This week</button>
+      <button class="tab" data-view="complaints">Complaints</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="today" class="view">
+      <h2 id="today-title">Today</h2>
+      <div id="today-meals" class="meals"></div>
+    </section>
+
+    <section id="week" class="view hidden">
+      <h2>This week</h2>
+      <div class="day-picker" id="day-picker"></div>
+      <div id="week-meals" class="meals"></div>
+    </section>
+
+    <section id="complaints" class="view hidden">
+      <h2>Complaints box</h2>
+      <form id="complaint-form">
+        <label>Meal
+          <select id="complaint-meal">
+            <option>Breakfast</option>
+            <option>Lunch</option>
+            <option>Snacks</option>
+            <option>Dinner</option>
+          </select>
+        </label>
+        <label>What went wrong?
+          <textarea id="complaint-text" rows="3" maxlength="280" required></textarea>
+        </label>
+        <button type="submit">Drop it in the box</button>
+      </form>
+      <ul id="complaint-list" class="complaint-list"></ul>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Made for the Web Tech mini project, Team 7: Riya, Arjun, Soham, Tisha.</p>
+    <p class="small">Menu from the mess notice board. Ratings stay on your phone.</p>
+  </footer>
+
+  <script src="js/ratings.js"></script>
+  <script src="js/complaints.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

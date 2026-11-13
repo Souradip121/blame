@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Blame: who actually did the group project?</title>
+<meta name="description" content="Paste your group project's GitHub link. Blame reads the commit history in your browser and shows who actually did the work. Nothing is stored.">
+<meta name="theme-color" content="#EEEBE5">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src https://api.github.com; img-src 'self' data: blob: https://avatars.githubusercontent.com; style-src 'self'; font-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta property="og:title" content="Blame">
+<meta property="og:description" content="Don't argue about who did the group project. Paste the repo.">
+<meta property="og:image" content="https://souradip121.github.io/blame/assets/og.jpg">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/barlow-condensed-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="torn.css">
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="js/app.js"></script>
+</head>
+<body>
+<!--
+THESIS: The group-project fight, settled on a tabloid front page. The category ships a GitHub-insights dashboard of charts; this prints the git history as a scandal: one headline, a halftone suspect, a verdict you send to the group.
+OWN-WORLD: Newsprint grey paper with grain, torn yellow highlighter tape behind black Anton headlines, red EXCLUSIVE tape, black torn caption strips in white condensed type, every face printed as black halftone dots on yellow, torn black paper at the foot of every page, hand-inked crowns and burst marks.
+STORY: Paste the repo, watch the split print (bars fill, numbers count up), read who carried and who did the README, send the front page to the group chat.
+FIRST VIEWPORT: Red EXCLUSIVE tape top left over a full-width yellow tape with "Blame" at ~40vw, a tilted yellow deck "Who actually did the group project?", the four-suspect halftone lineup with a torn bottom edge, then the GitHub field and the yellow "Find out" button, both above the fold at 390x844.
+FORM: Brief-pinned concept C "tabloid" (picked by the owner from five boards), comp-led from ui-concepts/blame/blame_c_tabloid.png; no roll.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+-->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 32 32"><path d="M4 16.5h22M18 8l8.5 8.5L18 25" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M20 12H5M11.5 5 4.5 12l7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-share" viewBox="0 0 32 32"><g fill="currentColor"><circle cx="24" cy="7" r="4.6"/><circle cx="8" cy="16" r="4.6"/><circle cx="24" cy="25" r="4.6"/></g><path d="M23 8 9 15.5 23 24" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+  <symbol id="i-crown" viewBox="0 0 40 32"><path fill="currentColor" d="M3 9.5c1.7 0 3 1.3 3 3 0 .6-.2 1.2-.5 1.6L11 19l5.6-11.2a3 3 0 1 1 6.8 0L29 19l5.5-4.9a3 3 0 1 1 2.3 1.3L33.5 26h-27L3.2 15.4A3 3 0 0 1 3 9.5ZM7 28h26v3.2H7z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 32 32"><path fill="currentColor" d="m16 2.5 4.1 9 9.8 1.1-7.3 6.6 2 9.7L16 24l-8.6 4.9 2-9.7-7.3-6.6 9.8-1.1z"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 32 32"><path fill="currentColor" d="M20.6 3.2A13 13 0 1 0 29 22.4 11 11 0 0 1 20.6 3.2Z"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 32 32"><path fill="currentColor" d="M16 29C7.6 22.6 2.5 17.6 2.5 11.6 2.5 7.4 5.7 4 9.8 4c2.6 0 4.8 1.4 6.2 3.6C17.4 5.4 19.6 4 22.2 4c4.1 0 7.3 3.4 7.3 7.6 0 6-5.1 11-13.5 17.4Z"/></symbol>
+  <symbol id="i-watch" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="36" r="23" stroke-width="6"/><path d="M26 6h12M32 6v7M50 14l4.5-4.5" stroke-width="5.5"/><path d="M32 36V22M32 36l-8 7" stroke-width="5"/></g></symbol>
+  <symbol id="d-crown" viewBox="0 0 120 90"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 72 7 20l28 30L55 8l19 40L106 17l-9 55" stroke-width="5.5"/><path d="M16 70c26-5 52-6 80-2" stroke-width="5"/><path d="M11 26 32 52" stroke-width="2.5" opacity=".7"/><path d="M58 13 72 46" stroke-width="2.5" opacity=".7"/></g></symbol>
+  <symbol id="d-scribble" viewBox="0 0 120 50"><path d="M6 40c20-8 52-22 84-30M14 46c26-9 58-20 98-27M30 46c18-6 38-10 62-14" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+  <symbol id="d-burst" viewBox="0 0 60 60"><path d="M30 4v15M50 12l-9 11M56 32H43" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/></symbol>
+  <symbol id="d-speed" viewBox="0 0 40 80"><path d="M6 10l20 8M3 40h22M6 70l20-8" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/></symbol>
+</svg>
+
+<div class="paper">
+
+<!-- ============ 1. PASTE YOUR REPO ============ -->
+<main class="screen home" id="home" data-screen="home">
+  <header class="front">
+    <p class="exclusive tape-red">Exclusive</p>
+    <h1 class="title"><span class="tape tape-yellow">Blame</span></h1>
+    <p class="deck"><span class="tape tape-yellow">Who actually did the group project?</span></p>
+  </header>
+
+  <figure class="lineup" aria-hidden="true">
+    <img class="lineup-fallback" src="assets/suspects/lineup.webp" alt="" width="1400" height="708">
+    <canvas class="lineup-print"></canvas>
+    <svg class="ink burst-l"><use href="#d-burst"/></svg>
+    <svg class="ink burst-r"><use href="#d-burst"/></svg>
+  </figure>
+
+  <form class="find" id="find" novalidate>
+    <label class="sr" for="repo">GitHub link of your group project</label>
+    <div class="field">
+      <svg class="gh" aria-hidden="true"><use href="#i-github"/></svg>
+      <input id="repo" name="repo" type="text" inputmode="url" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="github.com/your-team/your-project" aria-describedby="find-note find-status">
+    </div>
+    <button class="btn btn-yellow" id="go" type="submit"><span class="btn-label">Find out</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    <p class="status" id="find-status" role="status" aria-live="polite"></p>
+    <div class="progress" id="progress" hidden><span></span></div>
+    <p class="note" id="find-note">Public repos only. Nothing is stored.</p>
+    <p class="note demo-line">No repo handy? <button class="link" type="button" id="try-demo">Try the demo team’s repo</button></p>
+
+    <details class="token" id="token-box">
+      <summary>Private repo, or hit GitHub’s limit? Add a token</summary>
+      <div class="token-body">
+        <p>Without a token GitHub allows 60 lookups an hour from your network; one repo takes about 5 to 15. A token raises that to 5,000 and lets this page read private repos you can see.</p>
+        <ol>
+          <li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">Make a fine-grained token on GitHub</a> with read-only access (Contents and Metadata are enough).</li>
+          <li>Paste it here.</li>
+        </ol>
+        <label class="sr" for="token">GitHub token</label>
+        <div class="field field-token">
+          <input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
+          <button class="chip" type="button" id="token-save">Use it</button>
+        </div>
+        <p class="note token-state" id="token-state">It stays in this tab only (sessionStorage) and is sent to api.github.com and nowhere else.</p>
+        <button class="link" type="button" id="token-forget" hidden>Forget the token</button>
+      </div>
+    </details>
+  </form>
+</main>
+
+<!-- ============ 2. THE SPLIT ============ -->
+<section class="screen split" id="split" data-screen="split" hidden aria-labelledby="split-h">
+  <header class="mast">
+    <button class="back" type="button" data-back aria-label="Back"><svg><use href="#i-back"/></svg></button>
+    <p class="mast-name">Blame</p>
+  </header>
+  <div class="front front-inner">
+    <p class="exclusive tape-red small">Exclusive</p>
+    <h2 class="headline" id="split-h" tabindex="-1"><span class="tape tape-yellow">The split</span></h2>
+    <svg class="ink doodle-crown" aria-hidden="true"><use href="#d-crown"/></svg>
+    <svg class="ink doodle-scribble" aria-hidden="true"><use href="#d-scribble"/></svg>
+  </div>
+  <p class="strip" id="split-strip"><span id="repo-name">repo</span> <span class="dot">·</span> <span id="repo-count">0 commits</span></p>
+
+  <div class="measure" role="radiogroup" aria-label="Count by">
+    <span class="measure-label" aria-hidden="true">Count</span>
+    <button type="button" role="radio" aria-checked="true" data-measure="commits">Commits</button>
+    <button type="button" role="radio" aria-checked="false" data-measure="lines">Lines changed</button>
+  </div>
+  <p class="measure-note" id="measure-note" aria-live="polite" hidden></p>
+
+  <ol class="rows" id="rows"></ol>
+
+  <div class="deadline tape-box">
+    <svg class="watch" aria-hidden="true"><use href="#i-watch"/></svg>
+    <svg class="ink speed-l" aria-hidden="true"><use href="#d-speed"/></svg>
+    <div class="deadline-text">
+      <p class="deadline-big"><span id="dl-count">0</span> <span id="dl-unit">commits</span></p>
+      <p class="deadline-small" id="dl-label"><span>in the last 24 hours</span> <span id="dl-before">before the final commit</span></p>
+    </div>
+  </div>
+  <div class="deadline-tools">
+    <p class="note" id="dl-extra"></p>
+    <label class="dl-set"><span>Deadline</span><input type="datetime-local" id="dl-input" step="60"></label>
+    <button class="link" type="button" id="dl-clear" hidden>Use the final commit</button>
+  </div>
+
+  <button class="btn btn-yellow" type="button" id="to-verdict"><span class="btn-label">See the verdict</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+
+  <aside class="small-print" aria-labelledby="sp-h">
+    <h3 id="sp-h">The small print</h3>
+    <p class="caveat"><strong>Commits are a rough measure of effort.</strong> Pairing, design, testing, research and whoever made the slides don’t show up in git. The verdict is for fun.</p>
+    <ul id="notes"></ul>
+  </aside>
+</section>
+
+<!-- ============ 3. THE VERDICT ============ -->
+<section class="screen verdict" id="verdict" data-screen="verdict" hidden aria-labelledby="verdict-h">
+  <header class="mast">
+    <button class="back" type="button" data-back aria-label="Back"><svg><use href="#i-back"/></svg></button>
+    <p class="mast-name">Blame</p>
+  </header>
+  <div class="front front-inner">
+    <p class="exclusive tape-red small">Exclusive</p>
+    <h2 class="headline headline-verdict" id="verdict-h" tabindex="-1"><span class="tape tape-yellow" id="headline">Someone carried.</span></h2>
+  </div>
+
+  <figure class="hero" id="hero" aria-hidden="true">
+    <div class="splotch"></div>
+    <canvas class="hero-print"></canvas>
+    <svg class="ink hero-crown"><use href="#d-crown"/></svg>
+    <svg class="ink burst-l"><use href="#d-burst"/></svg>
+    <svg class="ink burst-r"><use href="#d-burst"/></svg>
+  </figure>
+
+  <p class="strip strip-jab" id="jab"></p>
+
+  <ul class="badges" id="badges" aria-label="Badges"></ul>
+
+  <button class="btn btn-black" type="button" id="share"><svg aria-hidden="true"><use href="#i-share"/></svg><span class="btn-label">Share to the group</span></button>
+  <p class="status" id="share-status" role="status" aria-live="polite"></p>
+
+  <details class="rules">
+    <summary>How the badges work</summary>
+    <ul id="rules"></ul>
+    <p class="note">One badge each, checked in that order. Shares follow what you counted (commits or lines changed). Night-before always looks at commits, and only counts when the project ran for more than 3 days.</p>
+  </details>
+  <p class="caveat caveat-verdict">For fun. Commit counts are a rough measure of effort: pairing, design and testing don’t show up.</p>
+  <button class="link another" type="button" id="another">Check another repo</button>
+</section>
+
+<footer class="foot">
+  <p>Made by <a href="https://www.instagram.com/souradip.sh/" rel="noopener noreferrer" target="_blank">@souradip.sh</a> · <a href="https://github.com/Souradip121/blame" rel="noopener noreferrer" target="_blank">Open source</a> · Reads GitHub in your browser</p>
+</footer>
+</div>
+
+<dialog class="sheet" id="sheet" aria-labelledby="sheet-h">
+  <div class="sheet-inner">
+    <h2 class="sheet-h" id="sheet-h">Your front page</h2>
+    <img id="sheet-img" alt="The verdict as an image">
+    <div class="sheet-actions">
+      <a class="btn btn-yellow" id="sheet-save" download="blame.png"><span class="btn-label">Save image</span></a>
+      <button class="btn btn-black" type="button" id="sheet-copy"><span class="btn-label">Copy link</span></button>
+    </div>
+    <p class="note" id="sheet-note">Save it, then drop it in the group chat.</p>
+    <button class="link" type="button" id="sheet-close">Close</button>
+  </div>
+</dialog>
+</body>
+</html>

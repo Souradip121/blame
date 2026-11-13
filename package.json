@@ -1,0 +1,12 @@
+{
+  "name": "blame",
+  "private": true,
+  "type": "module",
+  "description": "Who actually did the group project? Reads a GitHub repo's history in your browser. A static site with no backend.",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node tools/check-repos.mjs",
+    "serve": "python -m http.server 8811 --bind 127.0.0.1"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,44 @@
+{
+  "Monday": {
+    "breakfast": ["Poha", "Boiled egg", "Tea"],
+    "lunch": ["Rajma", "Jeera rice", "Roti", "Salad"],
+    "snacks": ["Samosa", "Tea"],
+    "dinner": ["Aloo gobi", "Dal tadka", "Roti", "Rice"]
+  },
+  "Tuesday": {
+    "breakfast": ["Aloo paratha", "Curd", "Tea"],
+    "lunch": ["Chole", "Rice", "Roti", "Pickle"],
+    "snacks": ["Bread pakora", "Tea"],
+    "dinner": ["Egg curry", "Paneer bhurji", "Roti", "Rice"]
+  },
+  "Wednesday": {
+    "breakfast": ["Idli", "Sambar", "Coconut chutney"],
+    "lunch": ["Kadhi pakora", "Rice", "Roti", "Papad"],
+    "snacks": ["Maggi", "Tea"],
+    "dinner": ["Chicken curry", "Mix veg", "Roti", "Rice"]
+  },
+  "Thursday": {
+    "breakfast": ["Upma", "Banana", "Coffee"],
+    "lunch": ["Dal makhani", "Rice", "Roti", "Salad"],
+    "snacks": ["Pav bhaji"],
+    "dinner": ["Bhindi fry", "Dal fry", "Roti", "Rice"]
+  },
+  "Friday": {
+    "breakfast": ["Puri", "Aloo sabzi", "Tea"],
+    "lunch": ["Sambar", "Rice", "Cabbage poriyal", "Curd"],
+    "snacks": ["Vada pav", "Tea"],
+    "dinner": ["Fish curry", "Paneer butter masala", "Roti", "Rice"]
+  },
+  "Saturday": {
+    "breakfast": ["Bread omelette", "Tea"],
+    "lunch": ["Veg biryani", "Raita"],
+    "snacks": ["Bhel puri"],
+    "dinner": ["Khichdi", "Papad", "Pickle"]
+  },
+  "Sunday": {
+    "breakfast": ["Chole bhature", "Lassi"],
+    "lunch": ["Chicken biryani", "Paneer biryani", "Raita"],
+    "snacks": ["Tea", "Biscuits"],
+    "dinner": ["Dal", "Aloo matar", "Roti", "Gulab jamun"]
+  }
+}
