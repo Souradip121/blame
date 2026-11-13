@@ -205,7 +205,7 @@ The world's motion only narrates printing: tapes slam onto the page, the portrai
 - Two faces only: Anton for anything a tabloid would print as a headline, Barlow Condensed for everything you read.
 - Yellow is the single highlight and the single data colour; red appears once per screen.
 - Printed matter is torn (seeded clip-path polygons); touch controls are softly rounded.
-- Printed pieces tilt counter-clockwise between 1 and 4 degrees; controls stay level.
+- Paper pieces tilt counter-clockwise between 1 and 4 degrees; controls stay level.
 - Every face is printed at runtime as 45-degree halftone dots, never shown as a raw photo.
 - Depth comes from stacked paper (fiber underlays, torn edges, tilt), not shadows.
 
@@ -219,7 +219,7 @@ Two inks and a highlighter on newsprint: black does the talking, yellow marks wh
 - **Deep Yellow** (#F2CF00): focus outlines on black surfaces only (the share button, the selected measure toggle), where the ink focus ring would vanish.
 
 ### Secondary
-- **Exclusive Red** (#E0251F): the EXCLUSIVE banner tape and nothing else, on the page and on the share card. White Anton on it is large text only.
+- **Exclusive Red** (#E0251F): the EXCLUSIVE banner tape on the page and on the share card, plus the border of a field holding a bad repo link. White Anton on it is large text only, and it is too light (about 4:1 on the paper) for small text.
 
 ### Neutral
 - **Press Black** (#121212): all headline type, body type, the caption strips, the share button, the selected toggle, the 3px focus ring, scrollbar thumb and every inked doodle. The halftone printer uses a near-identical #141414 for its dots.
@@ -235,9 +235,9 @@ Two inks and a highlighter on newsprint: black does the talking, yellow marks wh
 - **Reverse White** (#FFFFFF): type reversed out of black or red (strips, banner, share button, selected toggle, footer links) and the inside of input fields.
 
 ### Named Rules
-**The Highlighter Rule.** Yellow is the only colour that highlights and the only colour that measures. Headlines sit on it, bars fill with it, faces are printed on it, badges are cut from it. No second accent, no tints of it, no third yellow.
+**The Highlighter Rule.** Yellow is the only colour that highlights and the only colour that measures. Headlines sit on it, bars fill with it, faces are printed on it, badges are cut from it. No second accent and no new yellows; Deep Yellow is a focus outline, never a fill.
 
-**The One Banner Rule.** Red is the EXCLUSIVE tape, once per screen, top left, pasted over the headline tape. It never colours a button, a number, a link or an error; error text uses a darker #A3150F so the banner red keeps its single meaning.
+**The One Banner Rule.** Red is the EXCLUSIVE tape, once per screen, top left, pasted over the headline tape. Its only other job is the 1.5px border of an invalid field. It never fills a button or colours a number, a link or text; error text uses a darker #A3150F so it stays readable and the banner red keeps its meaning.
 
 **The Netted Paper Rule.** Grain darkens the paper by about eight levels, so anything drawn outside CSS that must sit flush with the page uses the on-screen value, not the token: the browser theme colour is #F0EDE7 and the share card's ground is #EEEBE5.
 
@@ -265,7 +265,7 @@ Two inks and a highlighter on newsprint: black does the talking, yellow marks wh
 ### Named Rules
 **The Two-Voice Rule.** Anton for what the front page shouts (title, headlines, deck, banner, nameplate, the deadline number, the yellow button); Barlow Condensed for everything read (names, figures, strips, body, notes, fields, the share button). No third face.
 
-**The Fill-the-Tape Rule.** Headline type is sized to its tape, not to a fixed scale: the title and the verdict headline are measured with canvas text metrics and set as large as the column allows, and a headline never wraps inside a tape. A second line gets its own tape.
+**The Fill-the-Tape Rule.** Headline type is sized to its tape, not to a fixed scale: the title and the verdict headline are measured with canvas text metrics and set as large as the column allows, and a headline never wraps inside a tape. A second line gets its own tape; only the deck wraps.
 
 **The Tabular Figure Rule.** Percentages are bold tabular figures, right-aligned against the name, so a count-up never jitters and the column of numbers reads as a ranking.
 
@@ -299,7 +299,7 @@ Controls you type into or press as a full-width bar are soft rectangles: buttons
 ### Named Rules
 **The Torn-or-Rounded Rule.** If it is printed, tear it; if it is a field or a full-width button, round it (8 to 10px). Never round a tape and never tear a field.
 
-**The Counter-Clockwise Rule.** Printed pieces tilt between -1 and -4 degrees (title -1.4, headline -1.6, verdict tapes -2.4 and -1.2, deck -3.6, banner -4, strips -1.4, deadline box -1). Only adjacent siblings may break the pattern, by at most +1 degree, to look hand-pasted. Fields, buttons and rows stay level.
+**The Counter-Clockwise Rule.** Paper pieces tilt between -1 and -4 degrees (title -1.4, headline -1.6, verdict tapes -2.4 and -1.2, deck -3.6, banner -4, strips -1.4, deadline box -1). Only adjacent siblings may break the pattern, by at most +1 degree, to look hand-pasted. Fields, buttons and rows stay level. Ink doodles and the painted swash (-14 degrees) are freehand and exempt.
 
 **The Constant-Bite Rule.** Edit torn edges by changing tools/make-torn.mjs and regenerating torn.css, never by hand, and reuse one of the eight edges rather than adding a ninth for a single element.
 
@@ -314,7 +314,7 @@ Big, flat, full-width bars you hit with a thumb.
 - **Links:** underlined Barlow Condensed 600 in Press Black, 1.5px underline at 0.2em offset; used for every secondary action ("Try the demo team's repo", "Check another repo", "Close").
 
 ### Inputs / Fields
-- **Style:** white field, 1.5px Field Edge border, 9px radius, 54px tall, 12px side padding, a 24px GitHub mark inside on the left, Barlow Condensed 600 at 18px; placeholder #8A867E.
+- **Style:** white field, 1.5px Field Edge border, 9px radius, 54px tall, 12px side padding, a 24px GitHub mark inside on the left, Barlow Condensed 600 at 18px; placeholder #6E6A63 (about 5:1 on white).
 - **Focus:** the border turns Press Black and a 3px Print Yellow ring appears around the field.
 - **Error / Disabled:** an invalid field takes an Exclusive Red border and the status line below turns #A3150F; disabled buttons drop to 55% opacity.
 - **Deadline date input:** the same edge on a 42px, 8px-radius box, with an inked calendar glyph.
@@ -366,11 +366,11 @@ The dialog is Newsprint with grain, 14px radius, 18px padding, an Anton 32px hea
 - **Do** skip every entrance, slam, print wipe, count-up and view transition under prefers-reduced-motion, leaving the final layout static.
 
 ### Don't:
-- **Don't** use Exclusive Red for anything but the EXCLUSIVE banner, and don't add a second banner, kicker or small label above a headline.
+- **Don't** use Exclusive Red beyond the EXCLUSIVE banner and the invalid-field border, and don't add a second banner, kicker or small label above a headline.
 - **Don't** add charts, axes, legends or dashboard cards; the only data marks are the yellow bar, the big Anton number and the tabular percentage.
 - **Don't** set headlines in Barlow Condensed or reading text in Anton, and don't bring in a third face.
 - **Don't** lift printed pieces with drop shadows; overlap, tear and tilt them instead.
 - **Don't** round a tape, strip or badge, and don't tear a field or a full-width button.
-- **Don't** tilt fields, buttons or rows, and don't tilt printed pieces clockwise beyond +1 degree.
+- **Don't** tilt fields, buttons or rows, and don't tilt paper pieces clockwise beyond +1 degree.
 - **Don't** hand-edit torn.css or add a one-off torn edge; regenerate from tools/make-torn.mjs.
 - **Don't** show a face as a raw colour photo.

@@ -1,0 +1,593 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-13T11:56:28+00:00",
+  "title": "Design System: Blame",
+  "extensions": {
+    "colorMeta": {
+      "yellow": {
+        "role": "primary",
+        "displayName": "Highlighter Yellow",
+        "canonical": "#FFE41A",
+        "oklch": "oklch(91.3% 0.186 100.4)",
+        "tonalRamp": [
+          "oklch(15.0% 0.186 100.4)",
+          "oklch(26.4% 0.186 100.4)",
+          "oklch(37.9% 0.186 100.4)",
+          "oklch(49.3% 0.186 100.4)",
+          "oklch(60.7% 0.186 100.4)",
+          "oklch(72.1% 0.186 100.4)",
+          "oklch(83.6% 0.186 100.4)",
+          "oklch(95.0% 0.186 100.4)"
+        ],
+        "note": "Always laid with the grain tile; nets to about rgb(247 221 29) on screen."
+      },
+      "yellow-print": {
+        "role": "primary",
+        "displayName": "Print Yellow",
+        "canonical": "#FCE015",
+        "oklch": "oklch(90.2% 0.185 99.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.185 99.9)",
+          "oklch(26.4% 0.185 99.9)",
+          "oklch(37.9% 0.185 99.9)",
+          "oklch(49.3% 0.185 99.9)",
+          "oklch(60.7% 0.185 99.9)",
+          "oklch(72.1% 0.185 99.9)",
+          "oklch(83.6% 0.185 99.9)",
+          "oklch(95.0% 0.185 99.9)"
+        ],
+        "note": "Canvas and raster yellow (halftone discs and halos, swash, share card, favicon, field focus ring). Must read as the same yellow as Highlighter Yellow."
+      },
+      "yellow-deep": {
+        "role": "primary",
+        "displayName": "Deep Yellow",
+        "canonical": "#F2CF00",
+        "oklch": "oklch(85.8% 0.177 96.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.177 96.7)",
+          "oklch(26.4% 0.177 96.7)",
+          "oklch(37.9% 0.177 96.7)",
+          "oklch(49.3% 0.177 96.7)",
+          "oklch(60.7% 0.177 96.7)",
+          "oklch(72.1% 0.177 96.7)",
+          "oklch(83.6% 0.177 96.7)",
+          "oklch(95.0% 0.177 96.7)"
+        ]
+      },
+      "red": {
+        "role": "secondary",
+        "displayName": "Exclusive Red",
+        "canonical": "#E0251F",
+        "oklch": "oklch(58.3% 0.220 28.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.220 28.5)",
+          "oklch(26.4% 0.220 28.5)",
+          "oklch(37.9% 0.220 28.5)",
+          "oklch(49.3% 0.220 28.5)",
+          "oklch(60.7% 0.220 28.5)",
+          "oklch(72.1% 0.220 28.5)",
+          "oklch(83.6% 0.220 28.5)",
+          "oklch(95.0% 0.220 28.5)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Press Black",
+        "canonical": "#121212",
+        "oklch": "oklch(18.2% 0.000 0.0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 0.0)",
+          "oklch(26.4% 0.000 0.0)",
+          "oklch(37.9% 0.000 0.0)",
+          "oklch(49.3% 0.000 0.0)",
+          "oklch(60.7% 0.000 0.0)",
+          "oklch(72.1% 0.000 0.0)",
+          "oklch(83.6% 0.000 0.0)",
+          "oklch(95.0% 0.000 0.0)"
+        ],
+        "note": "The halftone printer uses #141414 for its dots."
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "canonical": "#2B2926",
+        "oklch": "oklch(28.2% 0.006 78.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.006 78.2)",
+          "oklch(26.4% 0.006 78.2)",
+          "oklch(37.9% 0.006 78.2)",
+          "oklch(49.3% 0.006 78.2)",
+          "oklch(60.7% 0.006 78.2)",
+          "oklch(72.1% 0.006 78.2)",
+          "oklch(83.6% 0.006 78.2)",
+          "oklch(95.0% 0.006 78.2)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Faded Caption",
+        "canonical": "#55524B",
+        "oklch": "oklch(43.9% 0.012 87.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.012 87.5)",
+          "oklch(26.4% 0.012 87.5)",
+          "oklch(37.9% 0.012 87.5)",
+          "oklch(49.3% 0.012 87.5)",
+          "oklch(60.7% 0.012 87.5)",
+          "oklch(72.1% 0.012 87.5)",
+          "oklch(83.6% 0.012 87.5)",
+          "oklch(95.0% 0.012 87.5)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Newsprint",
+        "canonical": "#F8F5EF",
+        "oklch": "oklch(97.1% 0.009 84.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.009 84.6)",
+          "oklch(26.4% 0.009 84.6)",
+          "oklch(37.9% 0.009 84.6)",
+          "oklch(49.3% 0.009 84.6)",
+          "oklch(60.7% 0.009 84.6)",
+          "oklch(72.1% 0.009 84.6)",
+          "oklch(83.6% 0.009 84.6)",
+          "oklch(95.0% 0.009 84.6)"
+        ],
+        "note": "Nets to about rgb(240 237 231) on screen under the grain overlay; outside CSS use #F0EDE7 (theme-color) or #EEEBE5 (share card)."
+      },
+      "fiber": {
+        "role": "neutral",
+        "displayName": "Torn Fiber White",
+        "canonical": "#FAF8F3",
+        "oklch": "oklch(97.9% 0.007 88.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.007 88.6)",
+          "oklch(26.4% 0.007 88.6)",
+          "oklch(37.9% 0.007 88.6)",
+          "oklch(49.3% 0.007 88.6)",
+          "oklch(60.7% 0.007 88.6)",
+          "oklch(72.1% 0.007 88.6)",
+          "oklch(83.6% 0.007 88.6)",
+          "oklch(95.0% 0.007 88.6)"
+        ],
+        "note": "The halftone printer fills cut-out bodies with #F4F2EC."
+      },
+      "track": {
+        "role": "neutral",
+        "displayName": "Unprinted Track",
+        "canonical": "#DCDAD5",
+        "oklch": "oklch(88.9% 0.007 88.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.007 88.6)",
+          "oklch(26.4% 0.007 88.6)",
+          "oklch(37.9% 0.007 88.6)",
+          "oklch(49.3% 0.007 88.6)",
+          "oklch(60.7% 0.007 88.6)",
+          "oklch(72.1% 0.007 88.6)",
+          "oklch(83.6% 0.007 88.6)",
+          "oklch(95.0% 0.007 88.6)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Column Rule",
+        "canonical": "#CFCBC2",
+        "oklch": "oklch(84.3% 0.013 86.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.013 86.8)",
+          "oklch(26.4% 0.013 86.8)",
+          "oklch(37.9% 0.013 86.8)",
+          "oklch(49.3% 0.013 86.8)",
+          "oklch(60.7% 0.013 86.8)",
+          "oklch(72.1% 0.013 86.8)",
+          "oklch(83.6% 0.013 86.8)",
+          "oklch(95.0% 0.013 86.8)"
+        ]
+      },
+      "field-edge": {
+        "role": "neutral",
+        "displayName": "Field Edge",
+        "canonical": "#A9A59D",
+        "oklch": "oklch(72.3% 0.012 84.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.012 84.6)",
+          "oklch(26.4% 0.012 84.6)",
+          "oklch(37.9% 0.012 84.6)",
+          "oklch(49.3% 0.012 84.6)",
+          "oklch(60.7% 0.012 84.6)",
+          "oklch(72.1% 0.012 84.6)",
+          "oklch(83.6% 0.012 84.6)",
+          "oklch(95.0% 0.012 84.6)"
+        ]
+      },
+      "desk": {
+        "role": "neutral",
+        "displayName": "Desk Grey",
+        "canonical": "#D6D2C9",
+        "oklch": "oklch(86.4% 0.013 86.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.013 86.8)",
+          "oklch(26.4% 0.013 86.8)",
+          "oklch(37.9% 0.013 86.8)",
+          "oklch(49.3% 0.013 86.8)",
+          "oklch(60.7% 0.013 86.8)",
+          "oklch(72.1% 0.013 86.8)",
+          "oklch(83.6% 0.013 86.8)",
+          "oklch(95.0% 0.013 86.8)"
+        ]
+      },
+      "foot-black": {
+        "role": "neutral",
+        "displayName": "Back-page Black",
+        "canonical": "#1A1A19",
+        "oklch": "oklch(21.7% 0.002 106.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.002 106.6)",
+          "oklch(26.4% 0.002 106.6)",
+          "oklch(37.9% 0.002 106.6)",
+          "oklch(49.3% 0.002 106.6)",
+          "oklch(60.7% 0.002 106.6)",
+          "oklch(72.1% 0.002 106.6)",
+          "oklch(83.6% 0.002 106.6)",
+          "oklch(95.0% 0.002 106.6)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Reverse White",
+        "canonical": "#FFFFFF",
+        "oklch": "oklch(100.0% 0.000 0.0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 0.0)",
+          "oklch(26.4% 0.000 0.0)",
+          "oklch(37.9% 0.000 0.0)",
+          "oklch(49.3% 0.000 0.0)",
+          "oklch(60.7% 0.000 0.0)",
+          "oklch(72.1% 0.000 0.0)",
+          "oklch(83.6% 0.000 0.0)",
+          "oklch(95.0% 0.000 0.0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The word \"Blame\" on the home tape only, fitted in JS to the tape width (max 172px, 162px on the desk)."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Screen headlines on yellow tape; the verdict headline is fitted between 30px and 104px, one tape per line."
+      },
+      "deck": {
+        "displayName": "Deck",
+        "purpose": "The home question under the title; the deadline number steps it down to 44px."
+      },
+      "banner": {
+        "displayName": "Banner",
+        "purpose": "EXCLUSIVE in white uppercase on red tape; 33px on inner screens."
+      },
+      "nameplate": {
+        "displayName": "Nameplate",
+        "purpose": "The centred \"Blame\" in the inner-screen masthead."
+      },
+      "button-display": {
+        "displayName": "Button (Anton)",
+        "purpose": "Label of the yellow primary button."
+      },
+      "strip": {
+        "displayName": "Strip",
+        "purpose": "White type on black caption strips; the jab is fitted to one line from 26px down to 19px."
+      },
+      "name": {
+        "displayName": "Name",
+        "purpose": "A person's name in a split row."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Bold tabular percentage at the right of each row."
+      },
+      "button-condensed": {
+        "displayName": "Button (condensed)",
+        "purpose": "Label of the black share button."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Badge names, the measure toggle (19px), disclosure summaries."
+      },
+      "input": {
+        "displayName": "Input",
+        "purpose": "Text typed into the repo, token and date fields."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default page text; secondary text runs 16-17px in Soft Ink or Faded Caption."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Notes, row meta and small-print lists; the footer is 15px."
+      }
+    },
+    "shadows": [
+      {
+        "name": "button-yellow",
+        "value": "0 1px 0 rgb(0 0 0 / .08), 0 6px 14px -8px rgb(70 55 0 / .45)",
+        "purpose": "Warm, tight lift under the yellow primary button."
+      },
+      {
+        "name": "button-black",
+        "value": "0 8px 18px -10px rgb(0 0 0 / .6)",
+        "purpose": "Lift under the black share button."
+      },
+      {
+        "name": "paper-on-desk",
+        "value": "0 2px 4px rgb(0 0 0 / .12), 0 24px 60px -24px rgb(0 0 0 / .45)",
+        "purpose": "The paper column on the grey desk at 560px and wider."
+      },
+      {
+        "name": "sheet",
+        "value": "0 30px 60px -20px rgb(0 0 0 / .55)",
+        "purpose": "The share dialog, over a rgb(18 18 18 / .55) backdrop."
+      },
+      {
+        "name": "bar-fill-inset",
+        "value": "inset 0 -2px 0 rgb(170 140 0 / .18)",
+        "purpose": "Faint ink pooling along the bottom of a yellow bar fill."
+      },
+      {
+        "name": "field-focus-ring",
+        "value": "0 0 0 3px rgb(252 224 21 / .9)",
+        "purpose": "Print Yellow ring around a focused field (border turns Press Black)."
+      },
+      {
+        "name": "foot-lip",
+        "value": "filter: drop-shadow(0 -2px 0 rgb(255 255 255 / .75))",
+        "purpose": "White paper lip along the torn top of the black foot."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "The house ease (CSS --ease-out): bar fills, portrait print, jab rise, button press, progress bar."
+      },
+      {
+        "name": "ease-slam",
+        "value": "cubic-bezier(.2, 1.2, .3, 1) / cubic-bezier(.2, 1.25, .3, 1)",
+        "purpose": "Overshoot for tapes slamming onto the page (split / verdict)."
+      },
+      {
+        "name": "bar-fill",
+        "value": "transform scaleX(0 -> 1), 1100ms, delay 160ms + 110ms per row, ease-out",
+        "purpose": "Split rows print in rank order; on a measure switch bars grow from their previous width with no delay."
+      },
+      {
+        "name": "count-up",
+        "value": "1100ms, quartic ease-out 1 - (1 - k)^4, same clock as the bar",
+        "purpose": "Row percentages count up from 0 while the bar fills."
+      },
+      {
+        "name": "tape-slam-split",
+        "value": "rotate(-6deg) scale(1.18), opacity 0 -> rotate(-1.6deg) scale(1), 420ms, ease-slam",
+        "purpose": "\"The split\" headline tape lands."
+      },
+      {
+        "name": "tape-slam-verdict",
+        "value": "rotate(-9deg) scale(1.3), opacity 0 -> rotate(-2.4deg) scale(1), 460ms, 140ms stagger per line",
+        "purpose": "Each verdict headline tape lands in turn."
+      },
+      {
+        "name": "portrait-print",
+        "value": "clip-path inset(0 0 100% 0) -> inset(0), 900ms, delay 200ms, ease-out",
+        "purpose": "The verdict portrait prints top to bottom."
+      },
+      {
+        "name": "jab-rise",
+        "value": "translateY(16px), opacity 0 -> rest at rotate(-1.4deg), 500ms, delay 700ms, ease-out",
+        "purpose": "The jab strip rises after the portrait prints."
+      },
+      {
+        "name": "press",
+        "value": "translateY(1px) scale(.995), 120ms, ease-out",
+        "purpose": "Button press."
+      },
+      {
+        "name": "busy-nudge",
+        "value": "translateX(5px) at 50%, 800ms loop, ease-out",
+        "purpose": "The arrow nudges while a button is busy."
+      },
+      {
+        "name": "progress",
+        "value": "transform scaleX, 300ms, ease-out",
+        "purpose": "Fetch progress bar under the form."
+      },
+      {
+        "name": "screen-change",
+        "value": "view transition crossfade, 280ms",
+        "purpose": "Switching between home, split and verdict."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Every entrance, slam, print wipe, count-up and view transition is skipped; CSS durations drop to .01ms and JS returns before animating."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "max-width: 359px",
+        "purpose": "Gutter 12px, 60px avatars, name 24px, figure 26px, measure label hidden."
+      },
+      {
+        "name": "paper",
+        "value": "460px",
+        "purpose": "Max width of the single paper column."
+      },
+      {
+        "name": "desk",
+        "value": "min-width: 560px",
+        "purpose": "Body becomes the grey desk; the paper floats with a 28px margin and the paper-on-desk shadow; title 162px, deck 46px."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Full-width yellow Anton bar for the screen's main action (\"Find out\", \"See the verdict\").",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\"><span>Find out</span><svg viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M4 16.5h22M18 8l8.5 8.5L18 25\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button>",
+      "css": ".ds-btn-primary { display: flex; align-items: center; justify-content: center; gap: 14px; width: 100%; min-height: 60px; padding: 6px 20px; border: 0; border-radius: 10px; background: var(--yellow, #FFE41A) var(--grain, none); color: var(--ink, #121212); font-family: Anton, 'Arial Narrow', sans-serif; font-size: 33px; line-height: 1; box-shadow: 0 1px 0 rgb(0 0 0 / .08), 0 6px 14px -8px rgb(70 55 0 / .45); cursor: pointer; transition: transform .12s cubic-bezier(.16, 1, .3, 1), background-color .2s; } .ds-btn-primary span { padding-top: 2px; } .ds-btn-primary svg { width: 30px; height: 30px; flex: none; } .ds-btn-primary:hover { background-color: #FFE73A; } .ds-btn-primary:active { transform: translateY(1px) scale(.995); } .ds-btn-primary:focus-visible { outline: 3px solid var(--ink, #121212); outline-offset: 3px; }"
+    },
+    {
+      "name": "Share Button",
+      "kind": "button",
+      "refersTo": "button-share",
+      "description": "The one black button: sends the front page to the group.",
+      "html": "<button class=\"ds-btn-share\" type=\"button\"><svg viewBox=\"0 0 32 32\" aria-hidden=\"true\"><g fill=\"currentColor\"><circle cx=\"24\" cy=\"7\" r=\"4.6\"/><circle cx=\"8\" cy=\"16\" r=\"4.6\"/><circle cx=\"24\" cy=\"25\" r=\"4.6\"/></g><path d=\"M23 8 9 15.5 23 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/></svg><span>Share to the group</span></button>",
+      "css": ".ds-btn-share { display: flex; align-items: center; justify-content: center; gap: 14px; width: 100%; min-height: 64px; padding: 6px 20px; border: 0; border-radius: 10px; background: var(--ink, #121212) var(--grain, none); color: #fff; font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 600; font-size: 27px; box-shadow: 0 8px 18px -10px rgb(0 0 0 / .6); cursor: pointer; transition: transform .12s cubic-bezier(.16, 1, .3, 1), background-color .2s; } .ds-btn-share svg { width: 30px; height: 30px; flex: none; } .ds-btn-share:hover { background-color: #000; } .ds-btn-share:active { transform: translateY(1px) scale(.995); } .ds-btn-share:focus-visible { outline: 3px solid var(--yellow-deep, #F2CF00); outline-offset: 3px; }"
+    },
+    {
+      "name": "Repo Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "White field with the GitHub mark; focus turns the edge black with a yellow ring.",
+      "html": "<label class=\"ds-field\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3\"/></svg><input type=\"text\" placeholder=\"github.com/your-team/your-project\" aria-label=\"GitHub link\"></label>",
+      "css": ".ds-field { display: flex; align-items: center; gap: 10px; height: 54px; padding: 0 12px; background: #fff; border: 1.5px solid var(--field-edge, #A9A59D); border-radius: 9px; transition: border-color .15s, box-shadow .15s; } .ds-field svg { width: 24px; height: 24px; flex: none; color: var(--ink, #121212); } .ds-field input { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; color: var(--ink, #121212); font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 600; font-size: 18px; } .ds-field input::placeholder { color: #6E6A63; opacity: 1; } .ds-field:focus-within { border-color: var(--ink, #121212); box-shadow: 0 0 0 3px rgb(252 224 21 / .9); }"
+    },
+    {
+      "name": "Headline Tape with EXCLUSIVE Banner",
+      "kind": "custom",
+      "refersTo": "tape-headline",
+      "description": "Anton headline on torn yellow tape over a white fiber underlay, with the red EXCLUSIVE banner pasted on its top-left corner.",
+      "html": "<div class=\"ds-front\"><p class=\"ds-exclusive\">Exclusive</p><h2 class=\"ds-headline\"><span class=\"ds-tape\">The split</span></h2></div>",
+      "css": ".ds-front { padding: 8px 4px; } .ds-exclusive { position: relative; z-index: 2; display: block; width: fit-content; margin: 0 0 -.32em -8px; padding: .06em .3em .02em; background: var(--red, #E0251F) var(--grain, none); color: #fff; font-family: Anton, 'Arial Narrow', sans-serif; font-size: 33px; line-height: 1.08; letter-spacing: .005em; text-transform: uppercase; clip-path: var(--torn-tape, none); transform: rotate(-4deg); transform-origin: left center; } .ds-headline { margin: 0 0 0 -10px; font-weight: 400; } .ds-tape { position: relative; isolation: isolate; display: inline-block; padding: .1em .16em .02em; color: var(--ink, #121212); font-family: Anton, 'Arial Narrow', sans-serif; font-size: 72px; line-height: .98; letter-spacing: -.01em; white-space: nowrap; transform: rotate(-1.6deg); } .ds-tape::before, .ds-tape::after { content: ''; position: absolute; z-index: -1; } .ds-tape::before { inset: -7px -9px; background: var(--fiber, #FAF8F3); clip-path: var(--torn-fiber, none); opacity: .92; } .ds-tape::after { inset: 0; background-color: var(--yellow, #FFE41A); background-image: var(--grain, none); clip-path: var(--torn-a, none); }"
+    },
+    {
+      "name": "Caption Strip",
+      "kind": "custom",
+      "refersTo": "strip",
+      "description": "Black torn paper strip with white condensed type: the repo line on the split, the jab on the verdict.",
+      "html": "<p class=\"ds-strip\">hostel-mess-app <span>·</span> 95 commits</p>",
+      "css": ".ds-strip { display: inline-block; max-width: 100%; margin: 0; padding: 9px 18px 10px; background: var(--ink, #121212) var(--grain, none); color: #fff; font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 700; font-size: 26px; line-height: 1.1; clip-path: var(--torn-strip, none); transform: rotate(-1.4deg); } .ds-strip span { margin: 0 .25em; }"
+    },
+    {
+      "name": "Measure Toggle",
+      "kind": "chip",
+      "refersTo": "measure-toggle",
+      "description": "Two-option radio group printed as torn tape scraps; selected is black.",
+      "html": "<div class=\"ds-measure\" role=\"radiogroup\" aria-label=\"Count by\"><button type=\"button\" role=\"radio\" aria-checked=\"true\">Commits</button><button type=\"button\" role=\"radio\" aria-checked=\"false\">Lines changed</button></div>",
+      "css": ".ds-measure { display: flex; align-items: center; gap: 6px; } .ds-measure button { min-height: 42px; padding: 0 16px 1px; border: 0; background: var(--track, #DCDAD5) var(--grain, none); color: var(--ink-soft, #2B2926); font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 700; font-size: 19px; cursor: pointer; clip-path: var(--torn-tape, none); transform: rotate(-1.5deg); transition: background-color .15s, color .15s; } .ds-measure button + button { transform: rotate(1deg); } .ds-measure button[aria-checked='true'] { background-color: var(--ink, #121212); color: #fff; } .ds-measure button[aria-checked='false']:hover { background-color: #CFCCC5; } .ds-measure button:focus-visible { outline: 3px solid var(--yellow-deep, #F2CF00); outline-offset: -6px; }"
+    },
+    {
+      "name": "Split Row",
+      "kind": "card",
+      "refersTo": "bar-fill",
+      "description": "One person in the split: halftone disc, name and meta, tabular percentage, yellow bar on a grey track.",
+      "html": "<div class=\"ds-row\"><span class=\"ds-avatar\" aria-hidden=\"true\"></span><div><div class=\"ds-row-top\"><p><span class=\"ds-row-name\">Riya</span> <span class=\"ds-row-meta\">58 commits · 2 merges</span></p><span class=\"ds-row-pct\">61%</span></div><div class=\"ds-bar\"><span style=\"width:61%\"></span></div></div></div>",
+      "css": ".ds-row { display: grid; grid-template-columns: 70px 1fr; gap: 14px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule, #CFCBC2); font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; color: var(--ink, #121212); } .ds-avatar { display: block; width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle, var(--ink, #121212) 32%, transparent 34%) 0 0 / 4px 4px, #FCE015; } .ds-row-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; } .ds-row-top p { margin: 0; line-height: 1.05; } .ds-row-name { font-weight: 700; font-size: 28px; } .ds-row-meta { font-weight: 500; font-size: 16px; color: var(--muted, #55524B); } .ds-row-pct { font-weight: 700; font-size: 31px; line-height: 1; font-variant-numeric: tabular-nums; } .ds-bar { position: relative; height: 15px; margin-top: 7px; border-radius: 8px; background: var(--track, #DCDAD5); overflow: hidden; } .ds-bar span { position: absolute; inset: 0 auto 0 0; border-radius: 8px; background: var(--yellow, #FFE41A) var(--grain, none); box-shadow: inset 0 -2px 0 rgb(170 140 0 / .18); transform-origin: left center; }"
+    },
+    {
+      "name": "Badge Tile",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Torn yellow tile with a solid icon, the badge name and who earned it.",
+      "html": "<div class=\"ds-badge\"><svg viewBox=\"0 0 40 32\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M3 9.5c1.7 0 3 1.3 3 3 0 .6-.2 1.2-.5 1.6L11 19l5.6-11.2a3 3 0 1 1 6.8 0L29 19l5.5-4.9a3 3 0 1 1 2.3 1.3L33.5 26h-27L3.2 15.4A3 3 0 0 1 3 9.5ZM7 28h26v3.2H7z\"/></svg><span class=\"ds-badge-label\">Carried</span><span class=\"ds-badge-who\">Riya</span></div>",
+      "css": ".ds-badge { position: relative; isolation: isolate; display: inline-grid; justify-items: center; gap: 2px; padding: 10px 14px 8px; text-align: center; font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; color: var(--ink, #121212); } .ds-badge::after { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--yellow, #FFE41A) var(--grain, none); clip-path: var(--torn-c, none); } .ds-badge svg { width: 28px; height: 28px; } .ds-badge-label { font-weight: 700; font-size: 18px; line-height: 1.05; white-space: nowrap; } .ds-badge-who { font-weight: 500; font-size: 15px; line-height: 1.1; color: var(--ink-soft, #2B2926); }"
+    },
+    {
+      "name": "Torn Foot",
+      "kind": "nav",
+      "refersTo": "foot",
+      "description": "Torn black paper at the foot of every page, with the credit and source links.",
+      "html": "<footer class=\"ds-foot\"><p>Made by <a href=\"#\">@souradip.sh</a> · <a href=\"#\">Open source</a> · Reads GitHub in your browser</p></footer>",
+      "css": ".ds-foot { filter: drop-shadow(0 -2px 0 rgb(255 255 255 / .75)); } .ds-foot p { margin: 0; padding: 40px 16px 20px; background: #1A1A19 var(--grain, none); color: var(--rule, #CFCBC2); font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 500; font-size: 15px; text-align: center; clip-path: var(--torn-foot, none); } .ds-foot a { color: #fff; text-underline-offset: .18em; text-decoration-thickness: 1.5px; } .ds-foot a:focus-visible { outline: 3px solid var(--yellow, #FFE41A); outline-offset: 3px; border-radius: 4px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Scandal Sheet",
+    "overview": "Blame prints a repo's git history as the front page of a cheap tabloid, and the group-project fight is the scandal. Every screen is one sheet of warm newsprint (the paper token under an SVG grain tile and a large crumple-lighting texture) in a single phone-width column, and everything on that sheet is something a sub-editor would paste down by hand: torn yellow highlighter tape behind black Anton headlines, one red EXCLUSIVE banner, black caption strips reversed out in white condensed type, faces printed as black halftone dots on yellow, hand-inked crowns and burst marks, and torn black paper at the foot. Nothing is a card, a panel or a chart.\n\nThe page has two volumes. The top of each screen is front-page loud: banner, headline tape, a halftone portrait or lineup that bleeds to the paper edge, a black strip with the jab. Underneath it goes quiet: rows of names and percentages separated by thin column rules, then the small print under a double rule in muted condensed type. The loud layer is always Anton on yellow; the quiet layer is always Barlow Condensed on bare paper. The share card (1080x1920, drawn on canvas) is the same front page re-set for a group chat, built from the same tape, banner, strip, halftone and torn foot.\n\nThe world's motion only narrates printing: tapes slam onto the page, the portrait prints top to bottom, bars fill and their numbers count up, the jab rises into place. The confirmed rejection is the category default, a GitHub-insights dashboard of cards, axes and line charts; the owner picked this tabloid board over courtroom, git-graph, report-card and receipt concepts.",
+    "keyCharacteristics": [
+      "One 460px paper column; on wide screens it lies on a grey desk with a soft paper shadow.",
+      "Two faces only: Anton for anything a tabloid would print as a headline, Barlow Condensed for everything you read.",
+      "Yellow is the single highlight and the single data colour; red appears once per screen.",
+      "Printed matter is torn (seeded clip-path polygons); touch controls are softly rounded.",
+      "Paper pieces tilt counter-clockwise between 1 and 4 degrees; controls stay level.",
+      "Every face is printed at runtime as 45-degree halftone dots, never shown as a raw photo.",
+      "Depth comes from stacked paper (fiber underlays, torn edges, tilt), not shadows."
+    ],
+    "rules": [
+      {
+        "name": "The Highlighter Rule",
+        "body": "Yellow is the only colour that highlights and the only colour that measures. Headlines sit on it, bars fill with it, faces are printed on it, badges are cut from it. No second accent and no new yellows; Deep Yellow is a focus outline, never a fill.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Banner Rule",
+        "body": "Red is the EXCLUSIVE tape, once per screen, top left, pasted over the headline tape. Its only other job is the 1.5px border of an invalid field. It never fills a button or colours a number, a link or text; error text uses a darker #A3150F so it stays readable and the banner red keeps its meaning.",
+        "section": "colors"
+      },
+      {
+        "name": "The Netted Paper Rule",
+        "body": "Grain darkens the paper by about eight levels, so anything drawn outside CSS that must sit flush with the page uses the on-screen value, not the token: the browser theme colour is #F0EDE7 and the share card's ground is #EEEBE5.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Voice Rule",
+        "body": "Anton for what the front page shouts (title, headlines, deck, banner, nameplate, the deadline number, the yellow button); Barlow Condensed for everything read (names, figures, strips, body, notes, fields, the share button). No third face.",
+        "section": "typography"
+      },
+      {
+        "name": "The Fill-the-Tape Rule",
+        "body": "Headline type is sized to its tape, not to a fixed scale: the title and the verdict headline are measured with canvas text metrics and set as large as the column allows, and a headline never wraps inside a tape. A second line gets its own tape; only the deck wraps.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Figure Rule",
+        "body": "Percentages are bold tabular figures, right-aligned against the name, so a count-up never jitters and the column of numbers reads as a ranking.",
+        "section": "typography"
+      },
+      {
+        "name": "The Paper-Stack Rule",
+        "body": "Lift a printed piece with a fiber underlay, a torn edge, an overlap or a tilt, never with a drop shadow. Shadows are reserved for the buttons, the page on the desk and the dialog.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Torn-or-Rounded Rule",
+        "body": "If it is printed, tear it; if it is a field or a full-width button, round it (8 to 10px). Never round a tape and never tear a field.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Counter-Clockwise Rule",
+        "body": "Paper pieces tilt between -1 and -4 degrees (title -1.4, headline -1.6, verdict tapes -2.4 and -1.2, deck -3.6, banner -4, strips -1.4, deadline box -1). Only adjacent siblings may break the pattern, by at most +1 degree, to look hand-pasted. Fields, buttons and rows stay level. Ink doodles and the painted swash (-14 degrees) are freehand and exempt.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Constant-Bite Rule",
+        "body": "Edit torn edges by changing tools/make-torn.mjs and regenerating torn.css, never by hand, and reuse one of the eight edges rather than adding a ninth for a single element.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** set every headline in Anton on a torn Highlighter Yellow tape with the fiber underlay, tilted between -1 and -4 degrees, and fit its size to the column.",
+      "**Do** lay the grain tile over every printed fill (tapes, strips, banner, bars, buttons, foot) so colour reads as ink on paper.",
+      "**Do** print every face through js/halftone.js at the cell pitches above; show the plain image only as the fallback before the canvas prints.",
+      "**Do** keep each screen's primary action a full-width Highlighter Yellow Anton button at least 60px tall; the only black button is the share action.",
+      "**Do** keep the quiet layer quiet: notes, meta and small print in Barlow Condensed 16 to 17px in Faded Caption or Soft Ink, under 1px Column Rule hairlines or a 3px double Press Black rule.",
+      "**Do** keep fonts and images self-hosted; the page's Content-Security-Policy allows fonts, styles and scripts from its own origin only.",
+      "**Do** ship every generated raster with a .json provenance sidecar beside it (prompt, model, post-processing), as assets/suspects/*.webp and assets/swash.webp do.",
+      "**Do** mirror colour changes in js/halftone.js and js/card.js, which carry literal copies of the tokens (print ink #141414, Print Yellow, cut-out fill #F4F2EC, card ground #EEEBE5).",
+      "**Do** skip every entrance, slam, print wipe, count-up and view transition under prefers-reduced-motion, leaving the final layout static."
+    ],
+    "donts": [
+      "**Don't** use Exclusive Red beyond the EXCLUSIVE banner and the invalid-field border, and don't add a second banner, kicker or small label above a headline.",
+      "**Don't** add charts, axes, legends or dashboard cards; the only data marks are the yellow bar, the big Anton number and the tabular percentage.",
+      "**Don't** set headlines in Barlow Condensed or reading text in Anton, and don't bring in a third face.",
+      "**Don't** lift printed pieces with drop shadows; overlap, tear and tilt them instead.",
+      "**Don't** round a tape, strip or badge, and don't tear a field or a full-width button.",
+      "**Don't** tilt fields, buttons or rows, and don't tilt paper pieces clockwise beyond +1 degree.",
+      "**Don't** hand-edit torn.css or add a one-off torn edge; regenerate from tools/make-torn.mjs.",
+      "**Don't** show a face as a raw colour photo."
+    ]
+  }
+}
